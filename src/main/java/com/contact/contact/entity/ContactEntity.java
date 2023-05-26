@@ -1,4 +1,5 @@
-import javax.persistence.*;
+package com.contact.contact.entity;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
