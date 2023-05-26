@@ -1,8 +1,13 @@
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 @Entity
 @Table(name = "Contacts")
-public class Contact {
+public class ContactEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,10 +20,10 @@ public class Contact {
 
     private String email;
 
-    public Contact() {
+    public ContactEntity() {
     }
 
-    public Contact(String name, String company, String number, String email) {
+    public ContactEntity(String name, String company, String number, String email) {
         this.name = name;
         this.company = company;
         this.number = number;
