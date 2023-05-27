@@ -20,6 +20,6 @@ public class HTMLController {
     @PostMapping("/saveContact")
     public String saveContact(@ModelAttribute ContactModel contact) {
         contactRepository.save(contact);
-        return "redirect:/success.html";
+        return "redirect:/";
     }
 }
