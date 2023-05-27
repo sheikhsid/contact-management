@@ -20,13 +20,14 @@
 		<sonar.coverage.exclusions>
 			**/ContactApplication.*,
 			**/entity/*.*,
-			**/model/*.*,
+			**/model/*.*
 		</sonar.coverage.exclusions>
 		<sonar.exclusions>
 			**/ContactApplication.*,
 			**/entity/*.*,
-			**/model/*.*,
+			**/model/*.*
 		</sonar.exclusions>
+		<sonar.analysis.mode>publish</sonar.analysis.mode>
 	</properties>
 	<dependencies>
 		<!-- Spring Boot Dependencies -->
@@ -82,7 +83,7 @@
 			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.sonarsource.scanner.maven</groupId>
 			<artifactId>sonar-maven-plugin</artifactId>
