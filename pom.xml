@@ -15,6 +15,18 @@
 	<description>contact project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
+		<sonar.organization>sheikhsid1</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<sonar.coverage.exclusions>
+			**/ContactApplication.*,
+			**/entity/*.*,
+			**/model/*.*,
+		</sonar.coverage.exclusions>
+		<sonar.exclusions>
+			**/ContactApplication.*,
+			**/entity/*.*,
+			**/model/*.*,
+		</sonar.exclusions>
 	</properties>
 	<dependencies>
 		<!-- Spring Boot Dependencies -->
@@ -70,7 +82,12 @@
 			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
-
+		
+		<dependency>
+			<groupId>org.sonarsource.scanner.maven</groupId>
+			<artifactId>sonar-maven-plugin</artifactId>
+			<version>3.9.1.2184</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -79,16 +96,13 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!-- SonarCloud -->
 			<plugin>
 				<groupId>org.sonarsource.scanner.maven</groupId>
 				<artifactId>sonar-maven-plugin</artifactId>
-				<version>3.9.1.2184</version>
+				<version>3.9.0.2155</version>
 			</plugin>
-			<plugin>
-				<groupId>org.eluder.coveralls</groupId>
-				<artifactId>coveralls-maven-plugin</artifactId>
-				<version>4.4.0</version>
-			</plugin>
+			
 		</plugins>
 	</build>
 

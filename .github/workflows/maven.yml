@@ -30,13 +30,34 @@ jobs:
     - name: Build with Maven
       run: mvn clean install
 
-    - name: Run SonarCloud Analysis
-      uses: sonarsource/sonarcloud-github-action@master
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    - name: Cache SonarCloud packages
+      uses: actions/cache@v1
+      with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar-${{ hashFiles('**/pom.xml') }}
 
-    - name: Upload coverage to Coveralls
-      run: mvn clean test jacoco:report coveralls:report
+    - name: Cache Maven packages
+      uses: actions/cache@v1
+      with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+    - name: Build and analyze
       env:
-        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-    
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=sheikhsid_contact-management
+
+    - name: Unit and Integration Tests
+      run: mvn verify -Pjacoco
+
+    - name: Coveralls Report
+      run: >
+          mvn clean install verify coveralls:report
+          -DrepoToken=$COVERALLS_REPO_TOKEN
+          -DpullRequest=${{ github.event.pull_request.number }} -X
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COVERALLS_REPO_TOKEN: KxkQAUj97KhFYBD8H5m5u2hMVAVd6YqAD
