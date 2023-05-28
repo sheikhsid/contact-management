@@ -11,6 +11,7 @@ import java.util.Optional;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -54,6 +55,25 @@ public class ContactServiceTest {
 		assertEquals("Sheikh Saad", result.getName());
 		assertEquals("sheikh@domain.com", result.getEmail());
 
+	}
+
+	@Test
+	public void testSaveContact() {
+		// Prepare test data
+		ContactDto contactToSave = new ContactDto(null, "John Doe", null, null, "john@example.com");
+		ContactDto savedContact = new ContactDto(1L, "John Doe", null, null, "john@example.com");
+
+		// Mock the repository's behavior
+		when(contactRepository.save(any(ContactDto.class))).thenReturn(savedContact);
+
+		// Perform the service call
+		ContactDto result = contactService.saveContact(contactToSave);
+
+		// Verify the result
+		assertNotNull(result.getId());
+		assertEquals("John Doe", result.getName());
+		assertEquals("john@example.com", result.getEmail());
+		// You can add more assertions as needed
 	}
 
 	@Test
