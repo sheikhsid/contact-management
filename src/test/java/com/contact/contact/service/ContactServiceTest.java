@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-public class ContactServiceTest {
+class ContactServiceTest {
 
     private ContactService contactService;
 
@@ -29,7 +29,7 @@ public class ContactServiceTest {
     }
 
     @Test
-    public void testGetAllContacts() {
+    void testGetAllContacts() {
 		
         List<ContactDto> contacts = new ArrayList<>();
         contacts.add(new ContactDto(1L, "Sheikh Saad", null, null, "sheikh@domain.com"));
@@ -43,7 +43,7 @@ public class ContactServiceTest {
     }
 
 	@Test
-	public void testGetContactById() {
+	void testGetContactById() {
 		Long contactId = 1L;
 		ContactDto contact = new ContactDto(contactId, "Sheikh Saad", null, null, "sheikh@domain.com");
 
@@ -58,7 +58,7 @@ public class ContactServiceTest {
 	}
 
 	@Test
-	public void testSaveContact() {
+	void testSaveContact() {
 		// Prepare test data
 		ContactDto contactToSave = new ContactDto(null, "John Doe", null, null, "john@example.com");
 		ContactDto savedContact = new ContactDto(1L, "John Doe", null, null, "john@example.com");
@@ -77,7 +77,7 @@ public class ContactServiceTest {
 	}
 
 	@Test
-	public void testDeleteContact() {
+	void testDeleteContact() {
 		
 		Long contactId = 1L;
 
