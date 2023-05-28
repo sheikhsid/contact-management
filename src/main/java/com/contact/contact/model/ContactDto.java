@@ -15,9 +15,16 @@ public class ContactDto {
     private String number;
     private String email;
 
-    // Constructors, getters, and setters
+    public ContactDto() {
+    }
 
-    // Add constructors, getters, and setters
+    public ContactDto(Long id, String name, String company, String number, String email) {
+        this.id = id;
+        this.name = name;
+        this.company = company;
+        this.number = number;
+        this.email = email;
+    }
 
     public Long getId() {
         return id;
