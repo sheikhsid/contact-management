@@ -88,6 +88,12 @@
 			<artifactId>sonar-maven-plugin</artifactId>
 			<version>3.9.1.2184</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.eluder.coveralls</groupId>
+			<artifactId>coveralls-maven-plugin</artifactId>
+			<version>4.3.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -102,7 +108,26 @@
 				<artifactId>sonar-maven-plugin</artifactId>
 				<version>3.9.0.2155</version>
 			</plugin>
-			
+			<!-- Coveralls -->
+			<plugin>
+				<groupId>org.eluder.coveralls</groupId>
+				<artifactId>coveralls-maven-plugin</artifactId>
+				<version>4.3.0</version>
+				<configuration>
+					<jacocoReports>
+						<jacocoReport>${project.build.directory}/jacoco-ut/jacoco.xml</jacocoReport>
+						<jacocoReport>${project.build.directory}/jacoco-it/jacoco.xml</jacocoReport>
+					</jacocoReports>
+					<failOnServiceError>false</failOnServiceError>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>javax.xml.bind</groupId>
+						<artifactId>jaxb-api</artifactId>
+						<version>${javax-jaxb.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
 		</plugins>
 	</build>
 
