@@ -1,6 +1,6 @@
 package com.contact.contact.controller;
 
-import com.contact.contact.model.ContactModel;
+import com.contact.contact.model.ContactDto;
 import com.contact.contact.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,14 +21,14 @@ public class ContactController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ContactModel>> getAllContacts() {
-        List<ContactModel> contacts = contactService.getAllContacts();
+    public ResponseEntity<List<ContactDto>> getAllContacts() {
+        List<ContactDto> contacts = contactService.getAllContacts();
         return new ResponseEntity<>(contacts, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ContactModel> getContactById(@PathVariable("id") Long id) {
-        ContactModel contact = contactService.getContactById(id);
+    public ResponseEntity<ContactDto> getContactById(@PathVariable("id") Long id) {
+        ContactDto contact = contactService.getContactById(id);
         if (contact != null) {
             return new ResponseEntity<>(contact, HttpStatus.OK);
         } else {
@@ -37,8 +37,8 @@ public class ContactController {
     }
 
     @PostMapping
-    public ResponseEntity<ContactModel> saveContact(@RequestBody ContactModel contact) {
-        ContactModel savedContact = contactService.saveContact(contact);
+    public ResponseEntity<ContactDto> saveContact(@RequestBody ContactDto contact) {
+        ContactDto savedContact = contactService.saveContact(contact);
         return new ResponseEntity<>(savedContact, HttpStatus.CREATED);
     }
 

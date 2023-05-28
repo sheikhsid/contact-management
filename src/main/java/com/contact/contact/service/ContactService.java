@@ -1,15 +1,15 @@
 package com.contact.contact.service;
 
-import com.contact.contact.model.ContactModel;
+import com.contact.contact.model.ContactDto;
 
 import java.util.List;
 
 public interface ContactService {
-    List<ContactModel> getAllContacts();
+    List<ContactDto> getAllContacts();
 
-    ContactModel getContactById(Long id);
+    ContactDto getContactById(Long id);
 
-    ContactModel saveContact(ContactModel contact);
+    ContactDto saveContact(ContactDto contact);
 
     void deleteContact(Long id);
 }

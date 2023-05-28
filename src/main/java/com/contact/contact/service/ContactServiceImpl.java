@@ -1,6 +1,6 @@
 package com.contact.contact.service;
 
-import com.contact.contact.model.ContactModel;
+import com.contact.contact.model.ContactDto;
 import com.contact.contact.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,17 +18,17 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public List<ContactModel> getAllContacts() {
+    public List<ContactDto> getAllContacts() {
         return contactRepository.findAll();
     }
 
     @Override
-    public ContactModel getContactById(Long id) {
+    public ContactDto getContactById(Long id) {
         return contactRepository.findById(id).orElse(null);
     }
 
     @Override
-    public ContactModel saveContact(ContactModel contact) {
+    public ContactDto saveContact(ContactDto contact) {
         return contactRepository.save(contact);
     }
 

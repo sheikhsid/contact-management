@@ -1,6 +1,6 @@
 package com.contact.contact.controller;
 
-import com.contact.contact.model.ContactModel;
+import com.contact.contact.model.ContactDto;
 import com.contact.contact.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,7 +18,7 @@ public class HTMLController {
     }
 
     @PostMapping("/saveContact")
-    public String saveContact(@ModelAttribute ContactModel contact) {
+    public String saveContact(@ModelAttribute ContactDto contact) {
         contactRepository.save(contact);
         return "redirect:/";
     }
