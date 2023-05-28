@@ -58,3 +58,4 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         COVERALLS_REPO_TOKEN: KxkQAUj97KhFYBD8H5m5u2hMVAVd6YqAD
+        
