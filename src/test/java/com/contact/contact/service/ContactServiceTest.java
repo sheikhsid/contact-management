@@ -30,8 +30,8 @@ public class ContactServiceTest {
     public void testGetAllContacts() {
         // Prepare test data
         List<ContactDto> contacts = new ArrayList<>();
-        contacts.add(new ContactDto(1L, "John Doe", null, null, "john@example.com"));
-        contacts.add(new ContactDto(2L, "Jane Smith", null, null, "jane@example.com"));
+        contacts.add(new ContactDto(1L, "Sheikh Saad", null, null, "sheikh@domain.com"));
+        contacts.add(new ContactDto(2L, "Sheikh Amin", null, null, "amin@domain.com"));
 
         // Mock the repository's behavior
         when(contactRepository.findAll()).thenReturn(contacts);
@@ -43,4 +43,17 @@ public class ContactServiceTest {
         assertEquals(2, result.size());
         // You can add more assertions as needed
     }
+
+	@Test
+	public void testDeleteContact() {
+		// Prepare test data
+		Long contactId = 1L;
+
+		// Perform the service call
+		contactService.deleteContact(contactId);
+
+		// Verify the repository's delete method was called with the correct contactId
+		verify(contactRepository, times(1)).deleteById(contactId);
+	}
+
 }
