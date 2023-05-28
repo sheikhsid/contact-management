@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.Optional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,31 +29,40 @@ public class ContactServiceTest {
 
     @Test
     public void testGetAllContacts() {
-        // Prepare test data
+		
         List<ContactDto> contacts = new ArrayList<>();
         contacts.add(new ContactDto(1L, "Sheikh Saad", null, null, "sheikh@domain.com"));
         contacts.add(new ContactDto(2L, "Sheikh Amin", null, null, "amin@domain.com"));
 
-        // Mock the repository's behavior
         when(contactRepository.findAll()).thenReturn(contacts);
 
-        // Perform the service call
         List<ContactDto> result = contactService.getAllContacts();
 
-        // Verify the result
         assertEquals(2, result.size());
-        // You can add more assertions as needed
     }
 
 	@Test
+	public void testGetContactById() {
+		Long contactId = 1L;
+		ContactDto contact = new ContactDto(contactId, "Sheikh Saad", null, null, "sheikh@domain.com");
+
+		when(contactRepository.findById(contactId)).thenReturn(Optional.of(contact));
+
+		ContactDto result = contactService.getContactById(contactId);
+
+		assertEquals(contactId, result.getId());
+		assertEquals("Sheikh Saad", result.getName());
+		assertEquals("sheikh@domain.com", result.getEmail());
+
+	}
+
+	@Test
 	public void testDeleteContact() {
-		// Prepare test data
+		
 		Long contactId = 1L;
 
-		// Perform the service call
 		contactService.deleteContact(contactId);
 
-		// Verify the repository's delete method was called with the correct contactId
 		verify(contactRepository, times(1)).deleteById(contactId);
 	}
 
