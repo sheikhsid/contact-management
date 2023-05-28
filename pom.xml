@@ -27,7 +27,6 @@
 			**/entity/*.*,
 			**/model/*.*
 		</sonar.exclusions>
-		<sonar.analysis.mode>publish</sonar.analysis.mode>
 	</properties>
 	<dependencies>
 		<!-- Spring Boot Dependencies -->
