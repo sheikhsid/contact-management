@@ -76,4 +76,16 @@ public class ContactControllerTest {
         Mockito.verify(contactService, Mockito.times(1)).getContactById(contactId);
     }
 
+    @Test
+    public void testGetContactById_ContactNotFound() throws Exception {
+        Long contactId = 1L;
+
+        Mockito.when(contactService.getContactById(contactId)).thenReturn(null);
+
+        mockMvc.perform(get("/contacts/{id}", contactId))
+                .andExpect(status().isNotFound());
+
+        Mockito.verify(contactService, Mockito.times(1)).getContactById(contactId);
+    }
+
 }
