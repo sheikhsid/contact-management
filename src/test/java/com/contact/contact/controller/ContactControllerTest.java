@@ -106,5 +106,13 @@ public class ContactControllerTest {
         Mockito.verify(contactService, Mockito.times(1)).saveContact(any(ContactDto.class));
     }
 
+    @Test
+    public void testDeleteContact() throws Exception {
+        Long contactId = 1L;
 
+        mockMvc.perform(delete("/contacts/{id}", contactId))
+                .andExpect(status().isNoContent());
+
+        Mockito.verify(contactService, Mockito.times(1)).deleteContact(contactId);
+    }
 }
