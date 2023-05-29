@@ -88,4 +88,23 @@ public class ContactControllerTest {
         Mockito.verify(contactService, Mockito.times(1)).getContactById(contactId);
     }
 
+    @Test
+    public void testSaveContact() throws Exception {
+        ContactDto contact = new ContactDto(1L, "Sheikh Saad", null, null, "sheikh@domain.com");
+
+        Mockito.when(contactService.saveContact(any(ContactDto.class))).thenReturn(contact);
+
+        mockMvc.perform(post("/contacts")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"name\":\"Sheikh Saad\",\"email\":\"sheikh@domain.com\"}"))
+                .andExpect(status().isCreated())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.id").value(1))
+                .andExpect(jsonPath("$.name").value("Sheikh Saad"))
+                .andExpect(jsonPath("$.email").value("sheikh@domain.com"));
+
+        Mockito.verify(contactService, Mockito.times(1)).saveContact(any(ContactDto.class));
+    }
+
+
 }
