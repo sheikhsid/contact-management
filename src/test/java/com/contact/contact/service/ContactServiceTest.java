@@ -2,8 +2,8 @@ package com.contact.contact.service;
 
 import com.contact.contact.model.ContactDto;
 import com.contact.contact.repository.ContactRepository;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -11,26 +11,26 @@ import java.util.Optional;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
-class ContactServiceTest {
+public class ContactServiceTest {
 
     private ContactService contactService;
 
     @Mock
     private ContactRepository contactRepository;
 
-    @BeforeEach
+    @SuppressWarnings("deprecation")
+	@Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
         contactService = new ContactServiceImpl(contactRepository);
     }
 
     @Test
-    void testGetAllContacts() {
-		
+    public void testGetAllContacts() {
         List<ContactDto> contacts = new ArrayList<>();
         contacts.add(new ContactDto(1L, "Sheikh Saad", null, null, "sheikh@domain.com"));
         contacts.add(new ContactDto(2L, "Sheikh Amin", null, null, "amin@domain.com"));
@@ -42,48 +42,46 @@ class ContactServiceTest {
         assertEquals(2, result.size());
     }
 
-	@Test
-	void testGetContactById() {
-		Long contactId = 1L;
-		ContactDto contact = new ContactDto(contactId, "Sheikh Saad", null, null, "sheikh@domain.com");
+    @Test
+    public void testGetContactById() {
+        Long contactId = 1L;
+        ContactDto contact = new ContactDto(contactId, "Sheikh Saad", null, null, "sheikh@domain.com");
 
-		when(contactRepository.findById(contactId)).thenReturn(Optional.of(contact));
+        when(contactRepository.findById(contactId)).thenReturn(Optional.of(contact));
 
-		ContactDto result = contactService.getContactById(contactId);
+        ContactDto result = contactService.getContactById(contactId);
 
-		assertEquals(contactId, result.getId());
-		assertEquals("Sheikh Saad", result.getName());
-		assertEquals("sheikh@domain.com", result.getEmail());
+        assertEquals(contactId, result.getId());
+        assertEquals("Sheikh Saad", result.getName());
+        assertEquals("sheikh@domain.com", result.getEmail());
 
-	}
+    }
 
-	@Test
-	void testSaveContact() {
-		// Prepare test data
-		ContactDto contactToSave = new ContactDto(null, "John Doe", null, null, "john@example.com");
-		ContactDto savedContact = new ContactDto(1L, "John Doe", null, null, "john@example.com");
+    @Test
+    public void testSaveContact() {
+        // Prepare test data
+        ContactDto contactToSave = new ContactDto(null, "John Doe", null, null, "john@example.com");
+        ContactDto savedContact = new ContactDto(1L, "John Doe", null, null, "john@example.com");
 
-		// Mock the repository's behavior
-		when(contactRepository.save(any(ContactDto.class))).thenReturn(savedContact);
+        // Mock the repository's behavior
+        when(contactRepository.save(any(ContactDto.class))).thenReturn(savedContact);
 
-		// Perform the service call
-		ContactDto result = contactService.saveContact(contactToSave);
+        // Perform the service call
+        ContactDto result = contactService.saveContact(contactToSave);
 
-		// Verify the result
-		assertNotNull(result.getId());
-		assertEquals("John Doe", result.getName());
-		assertEquals("john@example.com", result.getEmail());
-		// You can add more assertions as needed
-	}
+        // Verify the result
+        assertNotNull(result.getId());
+        assertEquals("John Doe", result.getName());
+        assertEquals("john@example.com", result.getEmail());
+        // You can add more assertions as needed
+    }
 
-	@Test
-	void testDeleteContact() {
-		
-		Long contactId = 1L;
+    @Test
+    public void testDeleteContact() {
+        Long contactId = 1L;
 
-		contactService.deleteContact(contactId);
+        contactService.deleteContact(contactId);
 
-		verify(contactRepository, times(1)).deleteById(contactId);
-	}
-
+        verify(contactRepository, times(1)).deleteById(contactId);
+    }
 }
