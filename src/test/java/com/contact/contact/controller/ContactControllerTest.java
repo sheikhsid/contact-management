@@ -59,5 +59,21 @@ public class ContactControllerTest {
         Mockito.verify(contactService, Mockito.times(1)).getAllContacts();
     }
 
-  
+    @Test
+    public void testGetContactById() throws Exception {
+        Long contactId = 1L;
+        ContactDto contact = new ContactDto(contactId, "Sheikh Saad", null, null, "sheikh@domain.com");
+
+        Mockito.when(contactService.getContactById(contactId)).thenReturn(contact);
+
+        mockMvc.perform(get("/contacts/{id}", contactId))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.id").value(contactId))
+                .andExpect(jsonPath("$.name").value("Sheikh Saad"))
+                .andExpect(jsonPath("$.email").value("sheikh@domain.com"));
+
+        Mockito.verify(contactService, Mockito.times(1)).getContactById(contactId);
+    }
+
 }
