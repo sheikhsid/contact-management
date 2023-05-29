@@ -68,8 +68,8 @@ public class ContactServiceTest {
     @Test
     public void testSaveContact() {
         // Prepare test data
-        ContactDto contactToSave = new ContactDto(null, "John Doe", null, null, "john@example.com");
-        ContactDto savedContact = new ContactDto(1L, "John Doe", null, null, "john@example.com");
+        ContactDto contactToSave = new ContactDto(null, "Sheikh Saad", null, null, "sheikh@domain.com");
+        ContactDto savedContact = new ContactDto(1L, "Sheikh Amin", null, null, "amin@domain.com");
 
         // Mock the repository's behavior
         when(contactRepository.save(any(ContactDto.class))).thenReturn(savedContact);
@@ -79,8 +79,8 @@ public class ContactServiceTest {
 
         // Verify the result
         assertNotNull(result.getId());
-        assertEquals("John Doe", result.getName());
-        assertEquals("john@example.com", result.getEmail());
+        assertEquals("Sheikh Amin", result.getName());
+        assertEquals("amin@domain.com", result.getEmail());
         // You can add more assertions as needed
     }
 
