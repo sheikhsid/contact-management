@@ -2,6 +2,7 @@ package com.contact.contact.service;
 
 import com.contact.contact.model.ContactDto;
 import com.contact.contact.repository.ContactRepository;
+import com.contact.contact.exception.ContactNotFoundException;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -55,6 +56,13 @@ public class ContactServiceTest {
         assertEquals("Sheikh Saad", result.getName());
         assertEquals("sheikh@domain.com", result.getEmail());
 
+    }
+
+    @Test
+    public void testContactNotFoundExceptionMessage() {
+        String errorMessage = "Contact not found";
+        ContactNotFoundException exception = new ContactNotFoundException(errorMessage);
+        assertEquals(errorMessage, exception.getMessage());
     }
 
     @Test
