@@ -78,4 +78,24 @@ public class ContactControllerTestIT {
         assertNotNull(createdContact.getId());
     }
 
+    @Test
+    public void testGetContactById() {
+        // Arrange
+        ContactDto contact = new ContactDto();
+        contact.setName("Sheikh Saad");
+        contact.setEmail("sheikh@domain.com");
+        contact.setNumber("9876543210");
+        ContactDto savedContact = contactRepository.save(contact);
+
+        String url = "http://localhost:" + port + "/contacts/" + savedContact.getId();
+
+        // Act
+        ResponseEntity<ContactDto> response = restTemplate.getForEntity(url, ContactDto.class);
+
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        ContactDto fetchedContact = response.getBody();
+        assertEquals(savedContact.getId(), fetchedContact.getId());
+    }
+
 }
