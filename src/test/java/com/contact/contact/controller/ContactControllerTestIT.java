@@ -126,4 +126,22 @@ public class ContactControllerTestIT {
         assertEquals(2, contacts.length);
     }
 
+    @Test
+    public void testDeleteContact() {
+        // Arrange
+        ContactDto contactDto = new ContactDto();
+        contactDto.setName("Sheikh Saad");
+        contactDto.setEmail("sheikh@domain.com");
+        contactDto.setNumber("1234567890");
+
+        ContactDto savedContact = contactRepository.save(contactDto);
+
+        String url = "http://localhost:" + port + "/contacts/" + savedContact.getId();
+
+        // Act
+        restTemplate.delete(url);
+
+        // Assert
+        assertFalse(contactRepository.findById(savedContact.getId()).isPresent());
+    }
 }
