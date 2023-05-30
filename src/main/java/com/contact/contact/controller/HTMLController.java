@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class HTMLController {
-
     private final ContactRepository contactRepository;
 
     @Autowired
@@ -18,8 +17,10 @@ public class HTMLController {
     }
 
     @PostMapping("/saveContact")
-    public String saveContact(@ModelAttribute ContactDto contact) {
-        contactRepository.save(contact);
+    public String saveContact(@ModelAttribute ContactDto contactDto) {
+        // Perform necessary operations with the ContactDto object
+        // Here you can directly use the ContactDto object to save the data to the repository or perform any other required actions
+        contactRepository.save(contactDto);
         return "redirect:/";
     }
 }
