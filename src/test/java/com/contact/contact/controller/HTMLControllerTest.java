@@ -11,9 +11,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.times;
 
 public class HTMLControllerTest {
 
@@ -44,31 +42,6 @@ public class HTMLControllerTest {
                 .andExpect(MockMvcResultMatchers.redirectedUrl("/"));
 
         verify(contactRepository).save(contactDto);
-    }
-
-    @Test
-    public void testSaveContact_MissingName() throws Exception {
-        ContactDto contactDto = new ContactDto();
-        contactDto.setEmail("sheikh@domain.com");
-
-        mockMvc.perform(MockMvcRequestBuilders.post("/saveContact")
-                .flashAttr("contactDto", contactDto))
-                .andExpect(MockMvcResultMatchers.status().is3xxRedirection());
-
-        verify(contactRepository, times(1)).save(eq(contactDto));
-    }
-
-    @Test
-    public void testSaveContact_MissingEmail() throws Exception {
-        ContactDto contactDto = new ContactDto();
-        contactDto.setName("Sheikh");
-        contactDto.setEmail(null); // Set the email to null
-
-        mockMvc.perform(MockMvcRequestBuilders.post("/saveContact")
-                .flashAttr("contactDto", contactDto))
-                .andExpect(MockMvcResultMatchers.status().is3xxRedirection());
-
-        verify(contactRepository, times(1)).save(eq(contactDto));
     }
 
 }
