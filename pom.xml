@@ -60,7 +60,7 @@
 			</exclusions>
 		</dependency>
 
-		<!-- Other Dependencies -->
+		<!-- H2 Dependencies -->
 
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -191,9 +191,52 @@
 				<artifactId>sonar-maven-plugin</artifactId>
 				<version>3.9.0.2155</version>
 			</plugin>
-			
+			<!-- Mutation Tests  -->
+			<plugin>
+				<groupId>org.pitest</groupId>
+				<artifactId>pitest-maven</artifactId>
+				<version>1.4.9</version>
+				<executions>
+					<execution>
+						<id>pit-report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>mutationCoverage</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<targetClasses>
+						<param>com.contact.contact.controller.*</param>
+						<param>com.contact.contact.service.*</param>
+						<param>com.contact.contact.mapper.*</param>
+					</targetClasses>
+					<excludedTestClasses>
+						<param>com.contact.contact.controller.HTMLControllerTest</param>
+						<param>com.contact.contact.controller.HTMLControllerTestIT</param>
+					</excludedTestClasses>
+					<targetTests>
+						<param>com.contact.contact.controller.ContactControllerTest</param>
+						<param>com.contact.contact.controller.ContactControllerTestIT</param>
+						<param>com.contact.contact.service.ContactServiceTest</param>
+					</targetTests>
+					<avoidCallsTo>
+						<avoidCallsTo>java.util.logging</avoidCallsTo>
+						<avoidCallsTo>org.apache.log4j</avoidCallsTo>
+						<avoidCallsTo>org.slf4j</avoidCallsTo>
+						<avoidCallsTo>org.apache.commons.logging</avoidCallsTo>
+					</avoidCallsTo>
+					<mutators>
+						<mutator>DEFAULTS</mutator>
+					</mutators>
+					<mutationThreshold>0</mutationThreshold>
+					<outputFormats>
+						<outputFormat>XML</outputFormat>
+						<outputFormat>HTML</outputFormat>
+					</outputFormats>
+				</configuration>
+			</plugin>
 		</plugins>
-		<finalName>contact-management</finalName>
 	</build>
 
 	<repositories>
