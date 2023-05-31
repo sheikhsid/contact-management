@@ -31,7 +31,7 @@ public class HTMLControllerTest {
     }
 
     @Test
-    public void testSaveContact_RedirectsToRoot() throws Exception {
+    public void testSaveContact() throws Exception {
         ContactDto contactDto = new ContactDto();
         contactDto.setName("Sheikh");
         contactDto.setEmail("sheikh@domain.com");
