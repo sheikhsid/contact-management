@@ -195,7 +195,7 @@
 			<plugin>
 				<groupId>org.pitest</groupId>
 				<artifactId>pitest-maven</artifactId>
-				<version>1.4.9</version>
+				<version>1.4.10</version>
 				<executions>
 					<execution>
 						<id>pit-report</id>
@@ -229,7 +229,7 @@
 					<mutators>
 						<mutator>DEFAULTS</mutator>
 					</mutators>
-					<mutationThreshold>0</mutationThreshold>
+					<mutationThreshold>80</mutationThreshold>
 					<outputFormats>
 						<outputFormat>XML</outputFormat>
 						<outputFormat>HTML</outputFormat>
