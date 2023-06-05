@@ -17,10 +17,14 @@ public class HTMLController {
     }
 
     @PostMapping("/saveContact")
-    public String saveContact(@ModelAttribute ContactDto contactDto) {
-        // Perform necessary operations with the ContactDto object
-        // Here you can directly use the ContactDto object to save the data to the repository or perform any other required actions
-        contactRepository.save(contactDto);
+    public String saveContact(@ModelAttribute("contactDto") ContactDto contactDto) {
+        ContactDto sanitizedContactDto = new ContactDto();
+        sanitizedContactDto.setName(contactDto.getName());
+        sanitizedContactDto.setCompany(contactDto.getCompany());
+        sanitizedContactDto.setNumber(contactDto.getNumber());
+        sanitizedContactDto.setEmail(contactDto.getEmail());
+
+        contactRepository.save(sanitizedContactDto);
         return "redirect:/";
     }
 }
