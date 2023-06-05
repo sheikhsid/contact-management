@@ -1,5 +1,6 @@
-package com.contact.contact.controller;
+package com.contact.contact.unit;
 
+import com.contact.contact.controller.HTMLController;
 import com.contact.contact.model.ContactDto;
 import com.contact.contact.repository.ContactRepository;
 import org.junit.Before;

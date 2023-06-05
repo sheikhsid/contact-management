@@ -1,7 +1,9 @@
-package com.contact.contact.service;
+package com.contact.contact.unit;
 
 import com.contact.contact.model.ContactDto;
 import com.contact.contact.repository.ContactRepository;
+import com.contact.contact.service.ContactService;
+import com.contact.contact.service.ContactServiceImpl;
 import com.contact.contact.exception.ContactNotFoundException;
 import org.junit.Before;
 import org.junit.Test;

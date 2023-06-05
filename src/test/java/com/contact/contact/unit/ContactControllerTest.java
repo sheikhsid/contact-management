@@ -1,5 +1,6 @@
-package com.contact.contact.controller;
+package com.contact.contact.unit;
 
+import com.contact.contact.controller.ContactController;
 import com.contact.contact.model.ContactDto;
 import com.contact.contact.service.ContactService;
 import org.junit.Before;

@@ -109,6 +109,20 @@
 			<version>1.16.0</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- Cucumber dependencies -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>6.10.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>6.10.4</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -210,16 +224,16 @@
 					<targetClasses>
 						<param>com.contact.contact.controller.*</param>
 						<param>com.contact.contact.service.*</param>
-						<param>com.contact.contact.mapper.*</param>
 					</targetClasses>
 					<excludedTestClasses>
-						<param>com.contact.contact.controller.HTMLControllerTest</param>
-						<param>com.contact.contact.controller.HTMLControllerTestIT</param>
+						<param>com.contact.contact.unit.HTMLControllerTest</param>
+						<param>com.contact.contact.integration.HTMLControllerTestIT</param>
+						<param>com.contact.contact.e2e.TestRunnerE2E</param>
 					</excludedTestClasses>
 					<targetTests>
-						<param>com.contact.contact.controller.ContactControllerTest</param>
-						<param>com.contact.contact.controller.ContactControllerTestIT</param>
-						<param>com.contact.contact.service.ContactServiceTest</param>
+						<param>com.contact.contact.unit.ContactServiceTest</param>
+						<param>com.contact.contact.unit.ContactControllerTest</param>
+						<param>com.contact.contact.integration.ContactControllerTestIT</param>
 					</targetTests>
 					<avoidCallsTo>
 						<avoidCallsTo>java.util.logging</avoidCallsTo>

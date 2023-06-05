@@ -1,4 +1,4 @@
-package com.contact.contact.controller;
+package com.contact.contact.integration;
 
 import com.contact.contact.model.ContactDto;
 import com.contact.contact.repository.ContactRepository;
