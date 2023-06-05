@@ -1,6 +1,7 @@
 package com.contact.contact.controller;
 
 import com.contact.contact.model.ContactDto;
+import com.contact.contact.model.ContactForm;
 import com.contact.contact.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,14 +18,13 @@ public class HTMLController {
     }
 
     @PostMapping("/saveContact")
-    public String saveContact(@ModelAttribute("contactDto") ContactDto contactDto) {
-        ContactDto sanitizedContactDto = new ContactDto();
-        sanitizedContactDto.setName(contactDto.getName());
-        sanitizedContactDto.setCompany(contactDto.getCompany());
-        sanitizedContactDto.setNumber(contactDto.getNumber());
-        sanitizedContactDto.setEmail(contactDto.getEmail());
+    public String saveContact(@ModelAttribute ContactForm contactForm) {
+        ContactDto contactDto = new ContactDto();
+        contactDto.setName(contactForm.getName());
+        contactDto.setEmail(contactForm.getEmail());
+        // Set other fields as necessary
 
-        contactRepository.save(sanitizedContactDto);
+        contactRepository.save(contactDto);
         return "redirect:/";
     }
 }
