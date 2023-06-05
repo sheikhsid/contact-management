@@ -224,6 +224,7 @@
 					<targetClasses>
 						<param>com.contact.contact.controller.*</param>
 						<param>com.contact.contact.service.*</param>
+						<param>com.contact.contact.exception.*</param>
 					</targetClasses>
 					<excludedTestClasses>
 						<param>com.contact.contact.unit.HTMLControllerTest</param>
