@@ -1,6 +1,6 @@
 package com.contact.contact.integration;
 
-import com.contact.contact.model.ContactDto;
+import com.contact.contact.entity.ContactEntity;
 import com.contact.contact.repository.ContactRepository;
 
 import org.junit.AfterClass;
@@ -62,51 +62,51 @@ public class ContactControllerTestIT {
     @Test
     public void testCreateContact() {
         // Arrange
-        ContactDto contactDto = new ContactDto();
-        contactDto.setName("Sheikh Saad");
-        contactDto.setEmail("sheikh@domain.com");
-        contactDto.setNumber("1234567890");
+        ContactEntity contactEntity = new ContactEntity();
+        contactEntity.setName("Sheikh Saad");
+        contactEntity.setEmail("sheikh@domain.com");
+        contactEntity.setNumber("1234567890");
 
         String url = "http://localhost:" + port + "/contacts";
 
         // Act
-        ResponseEntity<ContactDto> response = restTemplate.postForEntity(url, contactDto, ContactDto.class);
+        ResponseEntity<ContactEntity> response = restTemplate.postForEntity(url, contactEntity, ContactEntity.class);
 
         // Assert
         assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        ContactDto createdContact = response.getBody();
+        ContactEntity createdContact = response.getBody();
         assertNotNull(createdContact.getId());
     }
 
     @Test
     public void testGetContactById() {
         // Arrange
-        ContactDto contact = new ContactDto();
-        contact.setName("Sheikh Saad");
-        contact.setEmail("sheikh@domain.com");
-        contact.setNumber("9876543210");
-        ContactDto savedContact = contactRepository.save(contact);
+        ContactEntity contactEntity = new ContactEntity();
+        contactEntity.setName("Sheikh Saad");
+        contactEntity.setEmail("sheikh@domain.com");
+        contactEntity.setNumber("9876543210");
+        ContactEntity savedContact = contactRepository.save(contactEntity);
 
         String url = "http://localhost:" + port + "/contacts/" + savedContact.getId();
 
         // Act
-        ResponseEntity<ContactDto> response = restTemplate.getForEntity(url, ContactDto.class);
+        ResponseEntity<ContactEntity> response = restTemplate.getForEntity(url, ContactEntity.class);
 
         // Assert
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        ContactDto fetchedContact = response.getBody();
+        ContactEntity fetchedContact = response.getBody();
         assertEquals(savedContact.getId(), fetchedContact.getId());
     }
 
     @Test
     public void testGetAllContacts() {
         // Arrange
-        ContactDto contact1 = new ContactDto();
+        ContactEntity contact1 = new ContactEntity();
         contact1.setName("Sheikh Saad");
         contact1.setEmail("sheikh@domain.com");
         contact1.setNumber("1234567890");
 
-        ContactDto contact2 = new ContactDto();
+        ContactEntity contact2 = new ContactEntity();
         contact2.setName("Sheikh Saad");
         contact2.setEmail("sheikh@domain.com");
         contact2.setNumber("9876543210");
@@ -117,11 +117,11 @@ public class ContactControllerTestIT {
         String url = "http://localhost:" + port + "/contacts";
 
         // Act
-        ResponseEntity<ContactDto[]> response = restTemplate.getForEntity(url, ContactDto[].class);
+        ResponseEntity<ContactEntity[]> response = restTemplate.getForEntity(url, ContactEntity[].class);
 
         // Assert
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        ContactDto[] contacts = response.getBody();
+        ContactEntity[] contacts = response.getBody();
         assertNotNull(contacts);
         assertEquals(2, contacts.length);
     }
@@ -129,12 +129,12 @@ public class ContactControllerTestIT {
     @Test
     public void testDeleteContact() {
         // Arrange
-        ContactDto contactDto = new ContactDto();
-        contactDto.setName("Sheikh Saad");
-        contactDto.setEmail("sheikh@domain.com");
-        contactDto.setNumber("1234567890");
+        ContactEntity contactEntity = new ContactEntity();
+        contactEntity.setName("Sheikh Saad");
+        contactEntity.setEmail("sheikh@domain.com");
+        contactEntity.setNumber("1234567890");
 
-        ContactDto savedContact = contactRepository.save(contactDto);
+        ContactEntity savedContact = contactRepository.save(contactEntity);
 
         String url = "http://localhost:" + port + "/contacts/" + savedContact.getId();
 

@@ -1,5 +1,6 @@
 package com.contact.contact.controller;
 
+import com.contact.contact.entity.ContactEntity;
 import com.contact.contact.model.ContactDto;
 import com.contact.contact.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,14 @@ public class HTMLController {
 
     @PostMapping("/saveContact")
     public String saveContact(@ModelAttribute ContactDto contactDto) {
-        // Perform necessary operations with the ContactDto object
-        // Here you can directly use the ContactDto object to save the data to the repository or perform any other required actions
-        contactRepository.save(contactDto);
+        ContactEntity contactEntity = new ContactEntity(
+                contactDto.getId(),
+                contactDto.getName(),
+                contactDto.getCompany(),
+                contactDto.getNumber(),
+                contactDto.getEmail()
+        );
+        contactRepository.save(contactEntity);
         return "redirect:/";
     }
 }

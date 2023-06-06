@@ -24,7 +24,8 @@ public class ContactEntity {
     public ContactEntity() {
     }
 
-    public ContactEntity(String name, String company, String number, String email) {
+    public ContactEntity(Long id, String name, String company, String number, String email) {
+        this.id = id;
         this.name = name;
         this.company = company;
         this.number = number;

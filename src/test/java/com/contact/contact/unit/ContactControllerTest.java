@@ -1,7 +1,7 @@
 package com.contact.contact.unit;
 
 import com.contact.contact.controller.ContactController;
-import com.contact.contact.model.ContactDto;
+import com.contact.contact.entity.ContactEntity;
 import com.contact.contact.service.ContactService;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,9 +39,9 @@ public class ContactControllerTest {
 
     @Test
     public void testGetAllContacts() throws Exception {
-        List<ContactDto> contacts = new ArrayList<>();
-        contacts.add(new ContactDto(1L, "Sheikh Saad", null, null, "sheikh@domain.com"));
-        contacts.add(new ContactDto(2L, "Sheikh Amin", null, null, "amin@domain.com"));
+        List<ContactEntity> contacts = new ArrayList<>();
+        contacts.add(new ContactEntity(1L, "Sheikh Saad", null, null, "sheikh@domain.com"));
+        contacts.add(new ContactEntity(2L, "Sheikh Amin", null, null, "amin@domain.com"));
 
         Mockito.when(contactService.getAllContacts()).thenReturn(contacts);
 
@@ -61,7 +61,7 @@ public class ContactControllerTest {
     @Test
     public void testGetContactById() throws Exception {
         Long contactId = 1L;
-        ContactDto contact = new ContactDto(contactId, "Sheikh Saad", null, null, "sheikh@domain.com");
+        ContactEntity contact = new ContactEntity(contactId, "Sheikh Saad", null, null, "sheikh@domain.com");
 
         Mockito.when(contactService.getContactById(contactId)).thenReturn(contact);
 
@@ -89,9 +89,9 @@ public class ContactControllerTest {
 
     @Test
     public void testSaveContact() throws Exception {
-        ContactDto contact = new ContactDto(1L, "Sheikh Saad", null, null, "sheikh@domain.com");
+        ContactEntity contact = new ContactEntity(1L, "Sheikh Saad", null, null, "sheikh@domain.com");
 
-        Mockito.when(contactService.saveContact(any(ContactDto.class))).thenReturn(contact);
+        Mockito.when(contactService.saveContact(any(ContactEntity.class))).thenReturn(contact);
 
         mockMvc.perform(post("/contacts")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -102,7 +102,7 @@ public class ContactControllerTest {
                 .andExpect(jsonPath("$.name").value("Sheikh Saad"))
                 .andExpect(jsonPath("$.email").value("sheikh@domain.com"));
 
-        Mockito.verify(contactService, Mockito.times(1)).saveContact(any(ContactDto.class));
+        Mockito.verify(contactService, Mockito.times(1)).saveContact(any(ContactEntity.class));
     }
 
     @Test

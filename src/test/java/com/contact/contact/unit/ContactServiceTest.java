@@ -1,6 +1,6 @@
 package com.contact.contact.unit;
 
-import com.contact.contact.model.ContactDto;
+import com.contact.contact.entity.ContactEntity;
 import com.contact.contact.repository.ContactRepository;
 import com.contact.contact.service.ContactService;
 import com.contact.contact.service.ContactServiceImpl;
@@ -34,13 +34,13 @@ public class ContactServiceTest {
 
     @Test
     public void testGetAllContacts() {
-        List<ContactDto> contacts = new ArrayList<>();
-        contacts.add(new ContactDto(1L, "Sheikh Saad", null, null, "sheikh@domain.com"));
-        contacts.add(new ContactDto(2L, "Sheikh Amin", null, null, "amin@domain.com"));
+        List<ContactEntity> contacts = new ArrayList<>();
+        contacts.add(new ContactEntity(1L, "Sheikh Saad", null, null, "sheikh@domain.com"));
+        contacts.add(new ContactEntity(2L, "Sheikh Amin", null, null, "amin@domain.com"));
 
         when(contactRepository.findAll()).thenReturn(contacts);
 
-        List<ContactDto> result = contactService.getAllContacts();
+        List<ContactEntity> result = contactService.getAllContacts();
 
         assertEquals(2, result.size());
     }
@@ -48,16 +48,15 @@ public class ContactServiceTest {
     @Test
     public void testGetContactById() {
         Long contactId = 1L;
-        ContactDto contact = new ContactDto(contactId, "Sheikh Saad", null, null, "sheikh@domain.com");
+        ContactEntity contact = new ContactEntity(contactId, "Sheikh Saad", null, null, "sheikh@domain.com");
 
         when(contactRepository.findById(contactId)).thenReturn(Optional.of(contact));
 
-        ContactDto result = contactService.getContactById(contactId);
+        ContactEntity result = contactService.getContactById(contactId);
 
         assertEquals(contactId, result.getId());
         assertEquals("Sheikh Saad", result.getName());
         assertEquals("sheikh@domain.com", result.getEmail());
-
     }
 
     @Test
@@ -70,14 +69,14 @@ public class ContactServiceTest {
     @Test
     public void testSaveContact() {
         // Prepare test data
-        ContactDto contactToSave = new ContactDto(null, "Sheikh Saad", null, null, "sheikh@domain.com");
-        ContactDto savedContact = new ContactDto(1L, "Sheikh Amin", null, null, "amin@domain.com");
+        ContactEntity contactToSave = new ContactEntity(null, "Sheikh Saad", null, null, "sheikh@domain.com");
+        ContactEntity savedContact = new ContactEntity(1L, "Sheikh Amin", null, null, "amin@domain.com");
 
         // Mock the repository's behavior
-        when(contactRepository.save(any(ContactDto.class))).thenReturn(savedContact);
+        when(contactRepository.save(any(ContactEntity.class))).thenReturn(savedContact);
 
         // Perform the service call
-        ContactDto result = contactService.saveContact(contactToSave);
+        ContactEntity result = contactService.saveContact(contactToSave);
 
         // Verify the result
         assertNotNull(result.getId());
