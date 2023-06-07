@@ -13,7 +13,7 @@
 | Security Rating                                          | [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=sheikhsid_contact_management&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=sheikhsid_contact_management) |
 | Maintainability Rating                                   | [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=sheikhsid_contact_management&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=sheikhsid_contact_management) |
 | Code Smells                                              | [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=sheikhsid_contact_management&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=sheikhsid_contact_management) |
-| Coverage Status                                          | [![![Coverage Status](https://coveralls.io/repos/github/sheikhsid/contact-management/badge.svg?branch=master)](https://coveralls.io/github/sheikhsid/contact-management?branch=master) |
+| Coverage Status                                          | [![Coverage Status](https://coveralls.io/repos/github/sheikhsid/contact-management/badge.svg?branch=master)](https://coveralls.io/github/sheikhsid/contact-management?branch=master) |
 | Java CI with Maven                                        | [![Java CI with Maven](https://github.com/sheikhsid/contact-management/actions/workflows/maven.yml/badge.svg)](https://github.com/sheikhsid/contact-management/actions/workflows/maven.yml) |
 
 
