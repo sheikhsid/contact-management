@@ -1,6 +1,6 @@
 <h1>Contact Management</h1>
 
-<p>Contact Management is a web application built using Java, Maven, and Spring Boot. It provides a RESTful API for managing contacts and a simple HTML frontend for interacting with the API. Docker is utilized to containerize the application, enabling easy deployment in any environment.</p>
+<p>Contact Management is a web application built using <a href="https://www.oracle.com/it/java/technologies/javase/jdk11-archive-downloads.html" target="_blank">Java</a>, Maven, and <a href="https://start.spring.io/" target="_blank">Spring Boot</a>. It provides a RESTful API for managing contacts and a simple HTML frontend for interacting with the API. <a href="https://www.docker.com/products/docker-desktop/" target="_blank">Docker</a> is utilized to containerize the application, enabling easy deployment in any environment.</p>
 
 | Badge                                                     | URL                                                                                           |
 |-----------------------------------------------------------|-----------------------------------------------------------------------------------------------|
@@ -31,11 +31,11 @@
       <li>Click <strong>Finish</strong> to import the project into Eclipse.</li>
     </ul>
   </li>
-  <li>In Eclipse, right-click on the project and select <strong>Run As -> Maven Install</strong> to build the project and download the required dependencies.</li>
+  <li>In <a href="https://www.eclipse.org/downloads/packages/" target="_blank">Eclipse</a>, right-click on the project and select <strong>Run As -> Maven Install</strong> to build the project and download the required dependencies.</li>
   <li>Once the Maven build is successful, you can proceed with running the application using Docker.</li>
   <li>Build the Docker image: <code>docker build -t contact-management .</code></li>
   <li>Run the Docker container: <code>docker run -p 8080:8080 contact-management</code></li>
-  <li>The application will now be accessible at <a href="http://localhost:8080">http://localhost:8080</a>.</li>
+  <li>The application will now be accessible at <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>.</li>
 </ol>
 
 <h2>API Endpoints</h2>
