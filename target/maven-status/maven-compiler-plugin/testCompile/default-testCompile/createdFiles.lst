@@ -1,8 +1,0 @@
-com\contact\contact\unit\ContactControllerTest.class
-com\contact\contact\unit\HTMLControllerTest.class
-com\contact\contact\integration\HTMLControllerTestIT.class
-com\contact\contact\e2e\ContactForm.class
-com\contact\contact\e2e\TestRunnerE2E.class
-com\contact\contact\integration\ContactControllerTestIT.class
-com\contact\contact\unit\ContactServiceTest.class
-com\contact\contact\ContactApplicationTests.class
