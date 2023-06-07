@@ -2,6 +2,21 @@
 
 <p>Contact Management is a web application built using Java, Maven, and Spring Boot. It provides a RESTful API for managing contacts and a simple HTML frontend for interacting with the API. Docker is utilized to containerize the application, enabling easy deployment in any environment.</p>
 
+| Badge                                                     | URL                                                                                           |
+|-----------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| Sonarcloud Quality                                       | [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sheikhsid_contact_management&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=sheikhsid_contact_management) |
+| Sonar Cloud Coverage and Ratings                         | [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=sheikhsid_contact_management&metric=coverage)](https://sonarcloud.io/summary/new_code?id=sheikhsid_contact_management) |
+| Reliability Rating                                       | [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=sheikhsid_contact_management&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=sheikhsid_contact_management) |
+| Duplicated Lines (%)                                     | [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=sheikhsid_contact_management&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=sheikhsid_contact_management) |
+| Vulnerabilities                                          | [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=sheikhsid_contact_management&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=sheikhsid_contact_management) |
+| Bugs                                                      | [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=sheikhsid_contact_management&metric=bugs)](https://sonarcloud.io/summary/new_code?id=sheikhsid_contact_management) |
+| Security Rating                                          | [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=sheikhsid_contact_management&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=sheikhsid_contact_management) |
+| Maintainability Rating                                   | [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=sheikhsid_contact_management&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=sheikhsid_contact_management) |
+| Code Smells                                              | [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=sheikhsid_contact_management&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=sheikhsid_contact_management) |
+| Coverage Status                                          | [![![Coverage Status](https://coveralls.io/repos/github/sheikhsid/contact-management/badge.svg?branch=master)](https://coveralls.io/github/sheikhsid/contact-management?branch=master) |
+| Java CI with Maven                                        | [![Java CI with Maven](https://github.com/sheikhsid/contact-management/actions/workflows/maven.yml/badge.svg)](https://github.com/sheikhsid/contact-management/actions/workflows/maven.yml) |
+
+
 <h2>Getting Started</h2>
 
 <p>To run the application, follow the steps below:</p>
